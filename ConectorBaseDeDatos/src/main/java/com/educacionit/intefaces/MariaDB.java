@@ -14,7 +14,9 @@ public interface MariaDB {
 		Properties propiedades = new Properties();
 		try {
 			// Thread.currentThread().getContextClassLoader().getResourceAsStream("database.properties");/
-			propiedades.load(new FileInputStream("src/main/resources/database.properties"));
+			
+			FileInputStream fileInputStream = new FileInputStream("C:/resources/database.properties");
+			propiedades.load(fileInputStream);
 			String driver = propiedades.getProperty("driver");
 			String url = propiedades.getProperty("url");
 			String usuario = propiedades.getProperty("usuario");

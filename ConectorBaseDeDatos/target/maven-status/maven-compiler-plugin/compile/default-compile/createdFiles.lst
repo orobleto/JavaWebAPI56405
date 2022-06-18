@@ -1,0 +1,6 @@
+com\educacionit\implementaciones\mariaDB\UsuarioImplementacion.class
+com\educacionit\entidades\Usuario.class
+com\educacionit\ConectorBaseDeDatos\App.class
+com\educacionit\intefaces\MariaDB.class
+com\educacionit\utilidades\Fechas.class
+com\educacionit\intefaces\DAO.class
