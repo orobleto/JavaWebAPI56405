@@ -8,15 +8,15 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public interface MariaDB {
+	String directorio = "C:/resources/database.properties";
 
 	default Connection getConexion() {
 		Connection connection = null;
 		Properties propiedades = new Properties();
 		try {
 			// Thread.currentThread().getContextClassLoader().getResourceAsStream("database.properties");/
-			
-			FileInputStream fileInputStream = new FileInputStream("C:/resources/database.properties");
-			propiedades.load(fileInputStream);
+
+			propiedades.load(new FileInputStream(directorio));
 			String driver = propiedades.getProperty("driver");
 			String url = propiedades.getProperty("url");
 			String usuario = propiedades.getProperty("usuario");
@@ -36,11 +36,12 @@ public interface MariaDB {
 		return connection;
 	}
 
+	//
 	default String getKEY() {
 		String key = null;
 		Properties propiedades = new Properties();
 		try {
-			propiedades.load(new FileInputStream("src/main/resources/database.properties"));
+			propiedades.load(new FileInputStream(directorio));
 			key = propiedades.getProperty("key");
 		} catch (IOException e) {
 			e.printStackTrace();
