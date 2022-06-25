@@ -1,0 +1,48 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UsuarioServicioService WSDL service -->
+
+  <service name="UsuarioServicio" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.educacionit.com"/>
+      <parameter name="wsdlServiceElement" value="UsuarioServicioService"/>
+      <parameter name="schemaQualified" value="http://dtos.educacionit.com,http://servicios.educacionit.com"/>
+      <parameter name="wsdlServicePort" value="UsuarioServicio"/>
+      <parameter name="className" value="com.educacionit.servicios.UsuarioServicioSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="UsuarioServicio"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="buscarEntidad" qname="operNS:buscarEntidad" xmlns:operNS="http://servicios.educacionit.com" returnQName="retNS:buscarEntidadReturn" xmlns:retNS="http://servicios.educacionit.com" returnType="rtns:UsuarioDTO" xmlns:rtns="http://dtos.educacionit.com" soapAction="" >
+        <parameter qname="pns:correo" xmlns:pns="http://servicios.educacionit.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="modificarEntidad" qname="operNS:modificarEntidad" xmlns:operNS="http://servicios.educacionit.com" returnQName="retNS:modificarEntidadReturn" xmlns:retNS="http://servicios.educacionit.com" returnType="rtns:UsuarioDTO" xmlns:rtns="http://dtos.educacionit.com" soapAction="" >
+        <parameter qname="pns:usuarioDTO" xmlns:pns="http://servicios.educacionit.com" type="tns:UsuarioDTO" xmlns:tns="http://dtos.educacionit.com"/>
+      </operation>
+      <operation name="insertarEntidad" qname="operNS:insertarEntidad" xmlns:operNS="http://servicios.educacionit.com" returnQName="retNS:insertarEntidadReturn" xmlns:retNS="http://servicios.educacionit.com" returnType="rtns:UsuarioDTO" xmlns:rtns="http://dtos.educacionit.com" soapAction="" >
+        <parameter qname="pns:usuarioDTO" xmlns:pns="http://servicios.educacionit.com" type="tns:UsuarioDTO" xmlns:tns="http://dtos.educacionit.com"/>
+      </operation>
+      <operation name="eliminarEntidad" qname="operNS:eliminarEntidad" xmlns:operNS="http://servicios.educacionit.com" returnQName="retNS:eliminarEntidadReturn" xmlns:retNS="http://servicios.educacionit.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:usuarioDTO" xmlns:pns="http://servicios.educacionit.com" type="tns:UsuarioDTO" xmlns:tns="http://dtos.educacionit.com"/>
+      </operation>
+      <operation name="listarEntidad" qname="operNS:listarEntidad" xmlns:operNS="http://servicios.educacionit.com" returnQName="retNS:listarEntidadReturn" xmlns:retNS="http://servicios.educacionit.com" returnType="rtns:UsuarioDTO" xmlns:rtns="http://dtos.educacionit.com" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="eliminarEntidad buscarEntidad insertarEntidad listarEntidad modificarEntidad"/>
+
+      <typeMapping
+        xmlns:ns="http://dtos.educacionit.com"
+        qname="ns:UsuarioDTO"
+        type="java:com.educacionit.dtos.UsuarioDTO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

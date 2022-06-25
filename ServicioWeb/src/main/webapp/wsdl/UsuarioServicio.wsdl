@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.educacionit.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios.educacionit.com" xmlns:intf="http://servicios.educacionit.com" xmlns:tns1="http://dtos.educacionit.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://servicios.educacionit.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dtos.educacionit.com"/>
+   <element name="buscarEntidad">
+    <complexType>
+     <sequence>
+      <element name="correo" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarEntidadResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarEntidadReturn" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modificarEntidad">
+    <complexType>
+     <sequence>
+      <element name="usuarioDTO" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modificarEntidadResponse">
+    <complexType>
+     <sequence>
+      <element name="modificarEntidadReturn" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertarEntidad">
+    <complexType>
+     <sequence>
+      <element name="usuarioDTO" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertarEntidadResponse">
+    <complexType>
+     <sequence>
+      <element name="insertarEntidadReturn" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="eliminarEntidad">
+    <complexType>
+     <sequence>
+      <element name="usuarioDTO" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="eliminarEntidadResponse">
+    <complexType>
+     <sequence>
+      <element name="eliminarEntidadReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listarEntidad">
+    <complexType/>
+   </element>
+   <element name="listarEntidadResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="listarEntidadReturn" type="tns1:UsuarioDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dtos.educacionit.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="UsuarioDTO">
+    <sequence>
+     <element name="clave" nillable="true" type="xsd:string"/>
+     <element name="correo" nillable="true" type="xsd:string"/>
+     <element name="fechaCreacion" nillable="true" type="xsd:string"/>
+     <element name="fechaModificacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="buscarEntidadRequest">
+
+      <wsdl:part element="impl:buscarEntidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="eliminarEntidadRequest">
+
+      <wsdl:part element="impl:eliminarEntidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarEntidadResponse">
+
+      <wsdl:part element="impl:buscarEntidadResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificarEntidadRequest">
+
+      <wsdl:part element="impl:modificarEntidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarEntidadRequest">
+
+      <wsdl:part element="impl:listarEntidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listarEntidadResponse">
+
+      <wsdl:part element="impl:listarEntidadResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertarEntidadResponse">
+
+      <wsdl:part element="impl:insertarEntidadResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="eliminarEntidadResponse">
+
+      <wsdl:part element="impl:eliminarEntidadResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modificarEntidadResponse">
+
+      <wsdl:part element="impl:modificarEntidadResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertarEntidadRequest">
+
+      <wsdl:part element="impl:insertarEntidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="UsuarioServicio">
+
+      <wsdl:operation name="buscarEntidad">
+
+         <wsdl:input message="impl:buscarEntidadRequest" name="buscarEntidadRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarEntidadResponse" name="buscarEntidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificarEntidad">
+
+         <wsdl:input message="impl:modificarEntidadRequest" name="modificarEntidadRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modificarEntidadResponse" name="modificarEntidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertarEntidad">
+
+         <wsdl:input message="impl:insertarEntidadRequest" name="insertarEntidadRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertarEntidadResponse" name="insertarEntidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="eliminarEntidad">
+
+         <wsdl:input message="impl:eliminarEntidadRequest" name="eliminarEntidadRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:eliminarEntidadResponse" name="eliminarEntidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listarEntidad">
+
+         <wsdl:input message="impl:listarEntidadRequest" name="listarEntidadRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listarEntidadResponse" name="listarEntidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="UsuarioServicioSoapBinding" type="impl:UsuarioServicio">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="buscarEntidad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarEntidadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarEntidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modificarEntidad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modificarEntidadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modificarEntidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertarEntidad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertarEntidadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertarEntidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="eliminarEntidad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="eliminarEntidadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="eliminarEntidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listarEntidad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listarEntidadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listarEntidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="UsuarioServicioService">
+
+      <wsdl:port binding="impl:UsuarioServicioSoapBinding" name="UsuarioServicio">
+
+         <wsdlsoap:address location="http://localhost:8080/ServicioWeb/services/UsuarioServicio"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

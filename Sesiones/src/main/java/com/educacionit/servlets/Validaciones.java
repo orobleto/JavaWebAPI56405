@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.educacionit.entidades.Usuario;
+import com.educacionit.enumerados.MensajesFront;
 import com.educacionit.implementaciones.mariaDB.UsuarioImplementacion;
 
 /**
@@ -32,8 +33,16 @@ public class Validaciones extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Boolean cerrarSession = Boolean.valueOf(request.getParameter("cerrarSesion"));
+
+		// cerrar sesion
+		if (cerrarSession && null != request.getSession().getId()) {
+			request.getSession().invalidate();
+
+			request.setAttribute("mensaje", MensajesFront.CERRAR_SESION);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+
+		}
 	}
 
 	/**
@@ -48,10 +57,13 @@ public class Validaciones extends HttpServlet {
 		Usuario usuario = usuarioImplementacion.buscarPorId(correo);
 		String redireccion = "index.jsp";
 
+		request.setAttribute("mensaje", MensajesFront.CREDENCIALES_INCORRECTAS);
+
 		if (null != usuario && usuario.getClave().equals(clave)) {
 			sesion = request.getSession();
 			sesion.setAttribute("usuario", usuario);
 			redireccion = "bienvenido.jsp";
+			request.setAttribute("mensaje", MensajesFront.CREDENCIALES_CORRECTAS);
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(redireccion);
