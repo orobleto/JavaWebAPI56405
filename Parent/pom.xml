@@ -9,6 +9,7 @@
 		<module>../ConectorBaseDeDatos</module>
 		<module>../Sesiones</module>
 		<module>../ServicioWeb</module>
+		<module>../ServicioRest</module>
 	</modules>
 
 	</project>

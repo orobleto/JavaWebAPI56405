@@ -1,5 +1,5 @@
 package com.educacionit.dtos;
-
+// date List
 public class UsuarioDTO {
 	private String correo;
 	private String clave;

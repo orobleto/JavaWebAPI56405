@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="email" id="correo" name="correo" placeholder="usuario@dominio.ext" required>
+        <br>
+        <input type="password" id="clave" name="clave" placeholder="tu clave" required>
+        <br>
+        <button onclick="agregar()">Enviar</button>
+        <button onclick="limpiar()">Limpiar</button>
+    </div>
+
+    <script>
+        const URL = "http://localhost:8080/ServicioRest/apis/usuarios";
+        function agregar() {
+            const email = document.getElementById("correo");
+            const clave = document.getElementById("clave");
+            let usuario = {
+                correo: email.value,
+                clave: clave.value
+            }
+
+            const infoPeticion = {
+                method: "POST",
+                body: JSON.stringify(usuario),
+                headers: {
+                    "content-type": "application/json",
+                    "USER-ID": "orobletot"
+                }
+            }
+
+            fetch(URL + "/guardarConCabecera", infoPeticion)
+                .then(e => console.log(e))
+                .catch(error => console.log(error))
+                .finally(e => limpiar());
+
+        }
+
+
+        function limpiar() {
+            const email = document.getElementById("correo");
+            const clave = document.getElementById("clave");
+            email.value = "";
+            clave.value = "";
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

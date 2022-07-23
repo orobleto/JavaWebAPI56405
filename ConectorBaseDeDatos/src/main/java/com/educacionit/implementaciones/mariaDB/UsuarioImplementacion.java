@@ -3,6 +3,7 @@ package com.educacionit.implementaciones.mariaDB;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class UsuarioImplementacion implements DAO<String, Usuario>, MariaDB {
 
 	@Override
 	public boolean insertar(Usuario usuario) {
+		// lanzo excepcion
 		String query = "insert into usuarios (correo,clave,fechaCreacion,fechaModificacion) values (?,AES_ENCRYPT(?,?),?,?)";
 		try {
 			if (null == psInsertar) {
@@ -30,7 +32,7 @@ public class UsuarioImplementacion implements DAO<String, Usuario>, MariaDB {
 			psInsertar.setString(1, usuario.getCorreo());
 			psInsertar.setString(2, usuario.getClave());
 			psInsertar.setString(3, getKEY());
-			psInsertar.setString(4, Fechas.getStringLocalDate(usuario.getFechaCreacion()));
+			psInsertar.setString(4, Fechas.getStringLocalDate(LocalDate.now()));
 			psInsertar.setString(5, Fechas.getStringLocalDateTime(LocalDateTime.now()));
 
 			return psInsertar.executeUpdate() == 1;
