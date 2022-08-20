@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 5px;
+    color: darkslategrey;
+    background-color: azure;
+}
+
+header {
+    padding: 10px;
+    text-align: center;
+    background: white;
+}
+
+header h1 {
+    font-size: 40px;
+}
+
+nav {
+    overflow: hidden;
+    background-color: darkcyan;
+}
+
+nav a {
+    text-decoration: none;
+    float: left;
+    display: block;
+    text-align: center;
+    color: azure;
+    padding: 10px 20px;
+}
+
+section {
+    text-align: center;
+}
+
+footer {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding-top: 15px;
+    background: azure;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+}
+
+td,
+th {
+    border: 1px solid darkcyan;
+    padding: 5px;
+}

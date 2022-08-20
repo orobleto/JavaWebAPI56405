@@ -10,6 +10,7 @@
 		<module>../Sesiones</module>
 		<module>../ServicioWeb</module>
 		<module>../ServicioRest</module>
+		<module>../JSF_01</module>
 	</modules>
 
 	</project>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/recursos/plantillas/plantilla.xhtml">
+
+	<ui:define name="titulo">Usuarios</ui:define>
+	<ui:define name="subtitulo">Lista de usuarios del Sistema</ui:define>
+	<ui:define name="cuerpo">
+
+		<div>
+
+			<h:dataTable value="#{usuarioControlador.getUsuarios()}" var="user"
+				border="1" title="Lista de Usuarios"
+				rendered="#{usuarioControlador.getUsuarios().size()>0}">
+				<h:column>
+					<f:facet name="header">Correo Electronico</f:facet>
+					<h:outputLabel value="#{user.correo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Clave Secreta</f:facet>
+					<h:outputLabel value="#{user.clave}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Fecha Creacion</f:facet>
+					<h:outputLabel value="#{user.fechaCreacion}">
+						<f:converter
+							converterId="com.educacionit.convertidores.LocalDateConverter" />
+					</h:outputLabel>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">Fecha de Modificacion</f:facet>
+					<h:outputLabel value="#{user.fechaModificacion}">
+						<f:converter
+							converterId="com.educacionit.convertidores.LocalDateTimeConverter" />
+					</h:outputLabel>
+
+				</h:column>
+
+			</h:dataTable>
+
+
+		</div>
+
+
+
+	</ui:define>
+
+
+</ui:composition>
+
+</html>

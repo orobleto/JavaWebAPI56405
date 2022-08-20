@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>Tutorial de JSF - Usuarios</h:head>
+<body>
+	<h:form>
+		<!-- Colocar el grupo de mensajes 
+		<h:messages />
+	-->
+		<div>
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Correo" for="correo" />
+				<h:inputText id="correo"
+					value="#{usuarioControlador.usuario.correo}" required="true"
+					requiredMessage="Es necesario un correo electronico"
+					a:placeholder="usuario@dominio.com">
+					<f:validator validatorId="correoValidador" />
+				</h:inputText>
+				<h:message for="correo" />
+
+				<h:outputLabel value="Clave" for="clave" />
+				<h:inputSecret id="clave"
+					value="#{usuarioControlador.usuario.clave}" required="true"
+					requiredMessage="Es necesario una clave secreta"
+					a:placeholder="1234">
+					<f:validateRegex
+						pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" />
+				</h:inputSecret>
+				<h:message for="clave" />
+
+				<h:outputLabel value="Fecha Creacion" for="fechaC" />
+				<h:inputText id="fechaC"
+					value="#{usuarioControlador.usuario.fechaCreacion}" required="true"
+					requiredMessage="Es necesario fecha de creacion"
+					a:placeholder="15/03/1983">
+					<f:converter
+						converterId="com.educacionit.convertidores.LocalDateConverter" />
+				</h:inputText>
+				<h:message for="fechaC" />
+
+				<h:outputLabel value="Fecha Creacion" for="fechaM" />
+				<h:inputText id="fechaM"
+					value="#{usuarioControlador.usuario.fechaModificacion}"
+					required="true"
+					requiredMessage="Es necesario fecha de Modificacion"
+					a:placeholder="15/03/1983 19:25:33">
+					<f:converter
+						converterId="com.educacionit.convertidores.LocalDateTimeConverter" />
+				</h:inputText>
+				<h:message for="fechaM" />
+
+				<h:commandButton action="#{usuarioControlador.agregarUsuario()}"
+					value="Agregar" />
+				<h:commandButton type="reset" value="Limpiar" />
+			</h:panelGrid>
+		</div>
+
+		<!-- DataTable basico JSF
+		<div>
+
+			<h:dataTable value="#{usuarioControlador.getUsuarios()}" var="user"
+				border="1" title="Lista de Usuarios"
+				rendered="#{usuarioControlador.getUsuarios().size()>0}">
+				<h:column>
+					<f:facet name="header">Correo Electronico</f:facet>
+					<h:outputLabel value="#{user.correo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Clave Secreta</f:facet>
+					<h:outputLabel value="#{user.clave}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Eliminar</f:facet>
+					<h:commandLink action="#{usuarioControlador.eliminarUsuario(user)}"
+						value="[-]" />
+				</h:column>
+
+			</h:dataTable>
+
+
+		</div>
+
+ -->
+
+		<div>
+
+			<p:dataTable value="#{usuarioControlador.getUsuarios()}" var="user">
+				<p:column headerText="Correo">
+
+					<h:outputLabel value="#{user.correo}" />
+				</p:column>
+				<p:column headerText="Clave">
+
+					<h:outputLabel value="#{user.clave}" />
+				</p:column>
+
+				<p:column headerText="Fecha Creacion">
+
+					<h:outputLabel value="#{user.fechaCreacion}">
+						<f:converter
+							converterId="com.educacionit.convertidores.LocalDateConverter" />
+					</h:outputLabel>
+				</p:column>
+
+				<p:column headerText="Fecha Modificacion">
+
+					<h:outputLabel value="#{user.fechaModificacion}">
+						<f:converter
+							converterId="com.educacionit.convertidores.LocalDateTimeConverter" />
+					</h:outputLabel>
+
+				</p:column>
+
+				<p:column headerText="Eliminar">
+
+					<h:commandLink action="#{usuarioControlador.eliminarUsuario(user)}"
+						value="[-]" />
+				</p:column>
+
+			</p:dataTable>
+
+
+		</div>
+
+
+	</h:form>
+</body>
+</html>

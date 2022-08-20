@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<link rel="stylesheet" href="recursos/css/main.css" />
+<title>Java Web API</title>
+</head>
+<body>
+	<!-- Cabecera -->
+	<div>
+		<header>
+		<h1>Curso Java WEB API</h1>
+		<h2>JSF</h2>
+		</header>
+	</div>
+	<!-- Menu -->
+	<div>
+		<ui:include src="/recursos/plantillas/menu.xhtml" />
+	</div>
+
+	<!-- Seccion -->
+	<div>
+		<section>
+		<h2>
+			<ui:insert name="titulo"></ui:insert>
+		</h2>
+		<h3>
+			<ui:insert name="subtitulo"></ui:insert>
+		</h3>
+		<div>
+			<ui:insert name="cuerpo"></ui:insert>
+		</div>
+		</section>
+	</div>
+
+	<!-- Pie de Pagina -->
+	<div>
+		<ui:include src="/recursos/plantillas/piepagina.xhtml" />
+	</div>
+
+</body>
+</html>
